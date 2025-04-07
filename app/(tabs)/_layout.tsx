@@ -1,4 +1,4 @@
-import { MaterialIcons } from '@expo/vector-icons'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Tabs } from 'expo-router'
 import React from 'react'
 
@@ -6,10 +6,10 @@ import { TabBar, TabsHeader } from '@/lib'
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
-  name: React.ComponentProps<typeof MaterialIcons>['name']
+  name: React.ComponentProps<typeof MaterialCommunityIcons>['name']
   color: string
 }) {
-  return <MaterialIcons size={24} {...props} />
+  return <MaterialCommunityIcons size={24} {...props} />
 }
 
 const TabLayout = () => (
@@ -17,27 +17,26 @@ const TabLayout = () => (
     tabBar={(props) => <TabBar {...props} />}
     screenOptions={{
       header: (props) => <TabsHeader navProps={props} children={undefined} />,
-      headerShown: false,
     }}
   >
     <Tabs.Screen
       name="index"
       options={{
-        title: 'Home',
+        title: 'Photos',
         tabBarIcon: ({ color, focused }) => (
-          <TabBarIcon name={focused ? 'home-filled' : 'home'} color={color} />
+          <TabBarIcon
+            name={focused ? 'image-multiple' : 'image-multiple-outline'}
+            color={color}
+          />
         ),
       }}
     />
     <Tabs.Screen
-      name="explore"
+      name="albums"
       options={{
-        title: 'Explore',
+        title: 'Albums',
         tabBarIcon: ({ color, focused }) => (
-          <TabBarIcon
-            name={focused ? 'explore' : 'travel-explore'}
-            color={color}
-          />
+          <TabBarIcon name={focused ? 'album' : 'image-album'} color={color} />
         ),
       }}
     />
